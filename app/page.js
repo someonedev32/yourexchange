@@ -205,43 +205,45 @@ function Header({ isDark, toggleTheme }) {
   );
 }
 
-// Hero Section with Centered Widget (Changelly Style)
+// Hero Section with Centered Widget (Changelly Pro Style)
 function HeroSection({ isDark }) {
-  const widgetBgColor = isDark ? '111113' : 'ffffff';
+  const widgetBgColor = isDark ? '0f0f11' : 'ffffff';
   const widgetSrc = `https://changenow.io/embeds/exchange-widget/v2/widget.html?FAQ=false&amount=${CONFIG.defaultAmount}&amountFiat=1500&backgroundColor=${widgetBgColor}&darkMode=${isDark}&from=${CONFIG.defaultFrom}&fromFiat=usd&horizontal=false&isFiat=false&lang=en-US&link_id=${CONFIG.linkId}&locales=false&logo=false&primaryColor=${CONFIG.primaryColor}&to=${CONFIG.defaultTo}&toFiat=eth&toTheMoon=false`;
 
   return (
     <section
       id="exchange"
-      className={`relative min-h-screen flex flex-col items-center justify-center pt-20 pb-12 overflow-hidden ${
-        isDark ? 'bg-[#0a0a0b]' : 'bg-gray-50'
+      className={`relative min-h-screen flex flex-col items-center justify-center pt-20 pb-16 overflow-hidden ${
+        isDark ? 'bg-[#080809]' : 'bg-[#f8faf6]'
       }`}
     >
       {/* Background Gradient Effects */}
       <div className="absolute inset-0 overflow-hidden">
         {isDark ? (
           <>
-            {/* Dark mode gradients */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-[#b1ff8c]/15 via-[#6fd455]/5 to-transparent rounded-full blur-3xl" />
-            <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-gradient-to-br from-[#1a3d12]/40 to-transparent rounded-full blur-3xl" />
-            <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-gradient-to-tl from-[#0d2b07]/30 to-transparent rounded-full blur-3xl" />
-            <div className="absolute top-1/4 right-1/4 w-[300px] h-[300px] bg-[#b1ff8c]/8 rounded-full blur-2xl animate-pulse" />
+            {/* Dark mode - Sophisticated gradients */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] bg-[radial-gradient(circle,rgba(111,212,85,0.12)_0%,rgba(111,212,85,0.04)_40%,transparent_70%)]" />
+            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,rgba(30,60,20,0.3)_0%,transparent_50%)]" />
+            <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom_right,rgba(20,50,15,0.25)_0%,transparent_50%)]" />
+            {/* Subtle floating orbs */}
+            <div className="absolute top-1/4 right-1/3 w-[400px] h-[400px] bg-[#b1ff8c]/5 rounded-full blur-3xl" />
+            <div className="absolute bottom-1/4 left-1/4 w-[300px] h-[300px] bg-[#6fd455]/5 rounded-full blur-3xl" />
           </>
         ) : (
           <>
-            {/* Light mode gradients */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-[#b1ff8c]/20 via-[#6fd455]/10 to-transparent rounded-full blur-3xl" />
-            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-gradient-to-bl from-[#e8ffd9]/60 to-transparent rounded-full blur-2xl" />
-            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-[#d4f5c2]/40 to-transparent rounded-full blur-2xl" />
+            {/* Light mode - Soft gradients */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-[radial-gradient(circle,rgba(177,255,140,0.25)_0%,rgba(111,212,85,0.08)_50%,transparent_70%)]" />
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(220,255,200,0.5)_0%,transparent_70%)]" />
+            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(200,255,180,0.4)_0%,transparent_70%)]" />
           </>
         )}
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Centered Content */}
-        <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
+        <div className="flex flex-col items-center text-center max-w-5xl mx-auto">
           {/* Hero Text */}
-          <div className="mb-10 space-y-5">
+          <div className="mb-8 lg:mb-12 space-y-4 lg:space-y-6">
             <h1 className={`text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.1] ${
               isDark ? 'text-white' : 'text-gray-900'
             }`}>
@@ -251,63 +253,72 @@ function HeroSection({ isDark }) {
                 seamlessly
               </span>
             </h1>
-            <p className={`text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed ${
+            <p className={`text-base lg:text-xl max-w-2xl mx-auto leading-relaxed ${
               isDark ? 'text-white/50' : 'text-gray-600'
             }`}>
               Exchange Bitcoin and 900+ altcoins in a fast, simple, and secure way.
-              <br className="hidden sm:block" />
               No registration required.
             </p>
           </div>
 
-          {/* Centered Widget */}
-          <div className="relative w-full max-w-[440px]">
-            {/* Widget Glow */}
-            <div className={`absolute -inset-2 rounded-3xl blur-2xl ${
+          {/* Pro Widget Container - Bigger on Desktop */}
+          <div className="relative w-full max-w-[480px] lg:max-w-[520px]">
+            {/* Multi-layer glow effect */}
+            <div className={`absolute -inset-4 rounded-[32px] blur-3xl ${
               isDark 
-                ? 'bg-gradient-to-b from-[#b1ff8c]/20 via-[#6fd455]/10 to-transparent' 
-                : 'bg-gradient-to-b from-[#b1ff8c]/30 via-[#6fd455]/15 to-transparent'
+                ? 'bg-gradient-to-b from-[#b1ff8c]/15 via-[#6fd455]/8 to-[#b1ff8c]/5' 
+                : 'bg-gradient-to-b from-[#b1ff8c]/25 via-[#6fd455]/15 to-transparent'
+            }`} />
+            <div className={`absolute -inset-1 rounded-[28px] ${
+              isDark 
+                ? 'bg-gradient-to-b from-[#b1ff8c]/10 to-transparent' 
+                : 'bg-gradient-to-b from-[#b1ff8c]/20 to-transparent'
             }`} />
             
-            {/* Widget Container */}
-            <div className={`relative rounded-2xl overflow-hidden shadow-2xl ${
+            {/* Widget Card */}
+            <div className={`relative rounded-3xl overflow-hidden ${
               isDark 
-                ? 'bg-[#111113] border border-white/[0.08] shadow-black/50' 
-                : 'bg-white border border-gray-200/80 shadow-gray-300/50'
+                ? 'bg-[#0f0f11] border border-white/[0.06] shadow-[0_8px_60px_-12px_rgba(0,0,0,0.8)]' 
+                : 'bg-white border border-gray-200/80 shadow-[0_8px_60px_-12px_rgba(0,0,0,0.15)]'
             }`}>
-              {/* Widget Header */}
-              <div className={`px-5 py-4 border-b ${
-                isDark ? 'border-white/[0.06]' : 'border-gray-100'
+              {/* Premium Widget Header */}
+              <div className={`px-6 py-5 border-b ${
+                isDark ? 'border-white/[0.06] bg-[#0f0f11]' : 'border-gray-100 bg-white'
               }`}>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-3">
-                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#b1ff8c] to-[#6fd455] flex items-center justify-center">
-                      <ArrowRightLeft className="w-4 h-4 text-[#0a0a0b]" />
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#b1ff8c] to-[#6fd455] flex items-center justify-center shadow-lg shadow-[#b1ff8c]/20">
+                      <ArrowRightLeft className="w-5 h-5 text-[#0a0a0b]" />
                     </div>
-                    <h3 className={`font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                      Exchange
-                    </h3>
+                    <div>
+                      <h3 className={`font-semibold text-lg ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                        Exchange
+                      </h3>
+                      <p className={`text-xs ${isDark ? 'text-white/40' : 'text-gray-400'}`}>
+                        Instant crypto swaps
+                      </p>
+                    </div>
                   </div>
-                  <div className="flex items-center space-x-2">
-                    <span className="relative flex h-2.5 w-2.5">
+                  <div className="flex items-center space-x-2 px-3 py-1.5 rounded-full bg-[#b1ff8c]/10">
+                    <span className="relative flex h-2 w-2">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#b1ff8c] opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#b1ff8c]"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-[#b1ff8c]"></span>
                     </span>
-                    <span className={`text-xs font-medium ${isDark ? 'text-white/40' : 'text-gray-400'}`}>
+                    <span className={`text-xs font-medium text-[#b1ff8c]`}>
                       Live
                     </span>
                   </div>
                 </div>
               </div>
               
-              {/* Widget iframe */}
+              {/* Widget iframe - Bigger height */}
               <div className="relative">
                 <iframe
                   id="exchange-widget"
                   src={widgetSrc}
                   style={{
                     width: '100%',
-                    height: '356px',
+                    height: '420px',
                     border: 'none',
                     display: 'block',
                   }}
@@ -319,7 +330,7 @@ function HeroSection({ isDark }) {
           </div>
 
           {/* Trust Indicators */}
-          <div className={`mt-10 flex flex-wrap justify-center gap-6 lg:gap-10 ${
+          <div className={`mt-10 lg:mt-14 flex flex-wrap justify-center gap-x-8 gap-y-4 ${
             isDark ? 'text-white/50' : 'text-gray-500'
           }`}>
             {[
@@ -336,8 +347,8 @@ function HeroSection({ isDark }) {
           </div>
 
           {/* Scroll Indicator */}
-          <div className={`mt-16 flex flex-col items-center space-y-2 ${
-            isDark ? 'text-white/25' : 'text-gray-400'
+          <div className={`mt-14 lg:mt-20 flex flex-col items-center space-y-2 ${
+            isDark ? 'text-white/20' : 'text-gray-400'
           }`}>
             <span className="text-xs tracking-widest uppercase">Explore</span>
             <ChevronDown className="w-5 h-5 animate-bounce" />
@@ -390,7 +401,7 @@ function FeaturesSection({ isDark }) {
   ];
 
   return (
-    <section id="features" className={`py-24 lg:py-32 relative ${isDark ? 'bg-[#0d0d0f]' : 'bg-white'}`}>
+    <section id="features" className={`py-24 lg:py-32 relative ${isDark ? 'bg-[#0a0a0c]' : 'bg-white'}`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <h2 className={`text-3xl lg:text-4xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
@@ -452,7 +463,7 @@ function HowItWorksSection({ isDark }) {
   ];
 
   return (
-    <section id="how-it-works" className={`py-24 lg:py-32 relative ${isDark ? 'bg-[#0a0a0b]' : 'bg-gray-50'}`}>
+    <section id="how-it-works" className={`py-24 lg:py-32 relative ${isDark ? 'bg-[#080809]' : 'bg-[#f8faf6]'}`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <h2 className={`text-3xl lg:text-4xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
@@ -535,7 +546,7 @@ function FAQSection({ isDark }) {
   ];
 
   return (
-    <section id="faq" className={`py-24 lg:py-32 relative ${isDark ? 'bg-[#0d0d0f]' : 'bg-white'}`}>
+    <section id="faq" className={`py-24 lg:py-32 relative ${isDark ? 'bg-[#0a0a0c]' : 'bg-white'}`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <h2 className={`text-3xl lg:text-4xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
@@ -581,7 +592,7 @@ function FAQSection({ isDark }) {
 function Footer({ isDark }) {
   return (
     <footer className={`py-12 border-t ${
-      isDark ? 'border-white/[0.04] bg-[#0a0a0b]' : 'border-gray-100 bg-gray-50'
+      isDark ? 'border-white/[0.04] bg-[#080809]' : 'border-gray-100 bg-[#f8faf6]'
     }`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
@@ -639,7 +650,7 @@ export default function Home() {
   const { isDark, toggleTheme } = useTheme();
 
   return (
-    <main className={`min-h-screen transition-colors duration-300 ${isDark ? 'bg-[#0a0a0b]' : 'bg-gray-50'}`}>
+    <main className={`min-h-screen transition-colors duration-300 ${isDark ? 'bg-[#080809]' : 'bg-[#f8faf6]'}`}>
       <Header isDark={isDark} toggleTheme={toggleTheme} />
       <HeroSection isDark={isDark} />
       <FeaturesSection isDark={isDark} />
